@@ -1,0 +1,25 @@
+[2023-12-20T17:18:30.689+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: data_loading_dag.data_loading_prod manual__2023-12-20T17:10:17.095501+00:00 [queued]>
+[2023-12-20T17:18:33.561+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: data_loading_dag.data_loading_prod manual__2023-12-20T17:10:17.095501+00:00 [queued]>
+[2023-12-20T17:18:33.722+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 4
+[2023-12-20T17:18:37.554+0000] {taskinstance.py:2192} INFO - Executing <Task(BashOperator): data_loading_prod> on 2023-12-20 17:10:17.095501+00:00
+[2023-12-20T17:18:37.620+0000] {standard_task_runner.py:60} INFO - Started process 50726 to run task
+[2023-12-20T17:18:37.671+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'data_loading_dag', 'data_loading_prod', 'manual__2023-12-20T17:10:17.095501+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/load_data_dag.py', '--cfg-path', '/tmp/tmpwgpvcys2']
+[2023-12-20T17:18:37.676+0000] {standard_task_runner.py:88} INFO - Job 11: Subtask data_loading_prod
+[2023-12-20T17:18:38.257+0000] {task_command.py:423} INFO - Running <TaskInstance: data_loading_dag.data_loading_prod manual__2023-12-20T17:10:17.095501+00:00 [running]> on host 380a186c55f2
+[2023-12-20T17:18:42.581+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='Mikiyas' AIRFLOW_CTX_DAG_ID='data_loading_dag' AIRFLOW_CTX_TASK_ID='data_loading_prod' AIRFLOW_CTX_EXECUTION_DATE='2023-12-20T17:10:17.095501+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-12-20T17:10:17.095501+00:00'
+[2023-12-20T17:18:42.626+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2023-12-20T17:18:42.631+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'python /path/to/your/main/project/script/load_data_prod.py']
+[2023-12-20T17:18:42.723+0000] {subprocess.py:86} INFO - Output:
+[2023-12-20T17:18:44.712+0000] {subprocess.py:93} INFO - python: can't open file '/path/to/your/main/project/script/load_data_prod.py': [Errno 2] No such file or directory
+[2023-12-20T17:18:44.713+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2023-12-20T17:18:44.745+0000] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2023-12-20T17:18:45.662+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=data_loading_dag, task_id=data_loading_prod, execution_date=20231220T171017, start_date=20231220T171830, end_date=20231220T171845
+[2023-12-20T17:18:47.536+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 11 for task data_loading_prod (Bash command failed. The command returned a non-zero exit code 2.; 50726)
+[2023-12-20T17:18:47.772+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2023-12-20T17:18:48.552+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check
